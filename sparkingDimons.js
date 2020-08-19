@@ -1,5 +1,5 @@
 let board = [1, 2, 3, 5, 4, 4, 5, 4, 5, 3, 4, 3, 2, 1, 2, 3]
-let board2 = [1, 2, 3, 5, 4, 4, 5, 4, 5, 3, 4, 3, 3, 5, 3, 3]
+let board2 = [1, 2, 3, 5, 4, 4, 5, 4, 5, 3, 4, 3, 3, 5, 3, 4]
 
 //---------//----------//----------//----------//----------//
 
@@ -25,25 +25,26 @@ const checkIfLegalMove = (board, swapIndex1, swapIndex2) => {
         board[i + 2] === board[i + 3] &&
         board[i + 3] === board[i + 4])
     ) {
-      console.log(`legal move, in horizontal line ${i / 4 + 1}`)
+      logLegal("horizontal", i)
       return true
     }
-  }
-  //check vertical
-  for (let i = 0; i < 16; i += 4) {
+    //check vertical
     if (
       (board[i] === board[i + 4] &&
         board[i + 4] === board[i + 8] &&
         board[i + 8] === board[i + 12]) ||
       (board[i + 4] === board[i + 8] &&
-        board[i + 8] == board[i + 12] &&
+        board[i + 8] === board[i + 12] &&
         board[i + 12] === board[i + 16])
     ) {
-      console.log(`legal move, in vertical line ${i / 4 + 1}`)
+      logLegal("virticle", i)
       return true
     }
   }
 }
+
+const logLegal = (linetype, line) =>
+  console.log(`legal move, in ${linetype} line ${line / 4 + 1}`)
 
 checkIfLegalMove(board, swapIndex1, swapIndex2)
 checkIfLegalMove(board2, swapIndex1b2, swapIndex2b2)
