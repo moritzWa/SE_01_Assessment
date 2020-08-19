@@ -18,9 +18,12 @@ const checkIfLegalMove = (board, swapIndex1, swapIndex2) => {
   //check horizontal
   for (let i = 0; i < 16; i += 4) {
     if (
-      board[i] === board[i + 1] &&
-      board[i + 1] === board[i + 2] &&
-      board[i + 2] === board[i + 3]
+      (board[i] === board[i + 1] &&
+        board[i + 1] === board[i + 2] &&
+        board[i + 2] === board[i + 3]) ||
+      (board[i + 1] === board[i + 2] &&
+        board[i + 2] === board[i + 3] &&
+        board[i + 3] === board[i + 4])
     ) {
       console.log(`legal move, in horizontal line ${i / 4 + 1}`)
       return true
@@ -29,9 +32,12 @@ const checkIfLegalMove = (board, swapIndex1, swapIndex2) => {
   //check vertical
   for (let i = 0; i < 16; i += 4) {
     if (
-      board[i] === board[i + 4] &&
-      board[i + 4] === board[i + 8] &&
-      board[i + 8] === board[i + 12]
+      (board[i] === board[i + 4] &&
+        board[i + 4] === board[i + 8] &&
+        board[i + 8] === board[i + 12]) ||
+      (board[i + 4] === board[i + 8] &&
+        board[i + 8] == board[i + 12] &&
+        board[i + 12] === board[i + 16])
     ) {
       console.log(`legal move, in vertical line ${i / 4 + 1}`)
       return true
